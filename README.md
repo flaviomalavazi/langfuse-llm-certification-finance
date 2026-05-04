@@ -36,6 +36,7 @@ Automated LLM model certification pipeline using [Langfuse](https://langfuse.com
 ## Prerequisites
 
 - Python 3.10+
+- npm 11.12.1+ (to build the frontend app)
 - A [Langfuse](https://cloud.langfuse.com) instance (Cloud free tier or self-hosted)
 - An LLM API key (OpenAI, Anthropic, or any OpenAI-compatible endpoint)
 
@@ -71,21 +72,28 @@ python run_certification.py --dataset certification/financebench-sample \
   --model claude-sonnet-4-6 --queue-failures
 ```
 
-### 5. Launch the Portal
+### 5. Build the frontend app:
+```bash
+cd ./portal/frontend
+npm install
+npm run build
+```
+
+### 6. Launch the Portal
 
 ```bash
 python -m portal.app    # Opens on http://localhost:8050
 ```
 
-### 6. View Results
+### 7. View Results
 
 Open `http://localhost:8050` for the Certification Dashboard, or Langfuse UI > **Datasets** > `certification/financebench-sample` > **Runs**
 
-### 6. Review Failed Items
+### 8. Review Failed Items
 
 Open your Langfuse UI > **Annotation Queues** > `Certification Review` to review items that failed automated evaluation.
 
-### 7. Export Report
+### 9. Export Report
 
 ```bash
 python export_results.py --dataset certification/financebench-sample

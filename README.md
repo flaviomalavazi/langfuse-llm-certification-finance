@@ -36,6 +36,7 @@ Automated LLM model certification pipeline using [Langfuse](https://langfuse.com
 ## Prerequisites
 
 - Python 3.10+
+- uv 0.11.8+ (to manage python dependencies)
 - npm 11.12.1+ (to build the frontend app)
 - A [Langfuse](https://cloud.langfuse.com) instance (Cloud free tier or self-hosted)
 - An LLM API key (OpenAI, Anthropic, or any OpenAI-compatible endpoint)

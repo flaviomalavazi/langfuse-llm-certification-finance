@@ -235,6 +235,16 @@ def create_certification_task(model: str, endpoint: str, api_key: str,
         if isinstance(inp, str):
             inp = {"text": inp}
 
+        # Surface gold reasoning on the trace span (free-form, can exceed
+        # the 200-char propagated-metadata cap, so kept off item.metadata).
+        expected = (
+            item.expected_output if hasattr(item, "expected_output")
+            else item.get("expected_output", {})
+        ) or {}
+        qr = expected.get("question_reasoning") if isinstance(expected, dict) else None
+        if qr:
+            get_client().update_current_span(metadata={"question_reasoning": qr})
+
         prompt = _build_prompt(inp)
 
         if not prompt:

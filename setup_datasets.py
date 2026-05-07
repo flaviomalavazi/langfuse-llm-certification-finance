@@ -86,10 +86,10 @@ def load_financebench_items(sample: bool):
             "expected_output": {
                 "answer": item["answer"],
                 "justification": item.get("justification", ""),
+                "question_reasoning": item.get("question_reasoning", ""),
             },
             "metadata": {
                 "question_type": item.get("question_type", ""),
-                "question_reasoning": item.get("question_reasoning", ""),
                 "gics_sector": item.get("gics_sector", ""),
                 "financebench_id": item.get("financebench_id", ""),
                 "source": "PatronusAI/financebench",
